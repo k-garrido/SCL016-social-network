@@ -14,11 +14,11 @@
         </li>
         <li>
           <p>Tipo de publicación</p>
-          <input type="radio" id="recomendation" value="0"> 
+          <input type="radio" id="recomendation" name="publicacionType" value="0"> 
           <label for="recomendation">Recomendación</label><br>
-          <input type="radio" id="memories" value="1">
+          <input type="radio" id="memories" name="publicacionType" value="1">
           <label for="memories">Recuerdos</label><br>
-          <input type="radio" id="caution" value="2">
+          <input type="radio" id="caution" name="publicacionType" value="2">
           <label for="caution">Precaución</label><br>
         </li>
         <li>
