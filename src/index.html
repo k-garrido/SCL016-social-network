@@ -4,17 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css" />
   <title>Document</title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDnQch-nKu3LuThcybO6dugl7iQGNYMAm0",
+    authDomain: "social-networking-d16bc.firebaseapp.com",
+    projectId: "social-networking-d16bc",
+    storageBucket: "social-networking-d16bc.appspot.com",
+    messagingSenderId: "75982529112",
+    appId: "1:75982529112:web:6406cf490b8d887b88202d"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </head>
+
 <body>
-  <header></header>
+  <header>
+    <img src="./images/Logo.png" id="logo">
+  </header>
   <div id= "root">
-
-   
-  
-
   </div>
   <script type="module" src="main.js"></script>
+  
 </body>
 </html>
 

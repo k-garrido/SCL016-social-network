@@ -17,6 +17,11 @@ const feed = `
     <input type="button" value="¡Yo voy!" id="likeButton">
   </figure>
 </div>
+<footer id="footer">
+    <img src="./images/home.png">
+    <img src="./images/magnifyingGlass.png">
+    <img src="./images/user.png">
+  </footer>
 </div>
 `
 return feed;

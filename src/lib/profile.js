@@ -1,7 +1,7 @@
 export const profileTemplate = () => {
   const profile = `
     <div id="pageProfile">
-      <h2>Modifica tu perfil</h2>
+      <h2>Editar perfil</h2>
       <p></p>
       <form>
         <ul>
