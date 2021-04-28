@@ -6,11 +6,12 @@ import {filterAndSeachTemplate} from './lib/filterAndSearch.js';
 import {profileTemplate} from './lib/profile.js';
 import {createPostTemplate} from './lib/createPost.js';
 import {editPostTemplate} from './lib/editPost.js';
+import {loginGoogle} from './lib/index.js';
 
 
-// document.getElementById("root").innerHTML = singInTemplate();
+document.getElementById("root").innerHTML = singInTemplate();
 document.getElementById("root").innerHTML += singUpTemplate();
-// document.getElementById("root").innerHTML += feedTemplate();
+//document.getElementById("root").innerHTML += feedTemplate();
 // document.getElementById("root").innerHTML += filterAndSeachTemplate();
 // document.getElementById("root").innerHTML += profileTemplate();
 // document.getElementById("root").innerHTML= createPostTemplate();
@@ -34,6 +35,7 @@ const singUpBttn = () =>{
     // ..
   });
 };
+console.log(singUpBttn)
 document.getElementById("singUpBttn").addEventListener("click",singUpBttn)
 
 //Ingreso sesión usuario
@@ -55,6 +57,7 @@ const singInBttn = () =>{
 };
 document.getElementById("singInBttn").addEventListener ("click", singInBttn);
 
+// Creando el observador
 const observer = ()=>{
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -72,3 +75,7 @@ const observer = ()=>{
 };
 observer();
 
+const loginBttn= document.querySelector("#googleBttn");
+loginBttn.addEventListener ("click", ()=>{
+  loginGoogle()
+})
