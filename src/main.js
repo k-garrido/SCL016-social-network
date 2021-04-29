@@ -6,7 +6,7 @@ import {filterAndSeachTemplate} from './lib/filterAndSearch.js';
 import {profileTemplate} from './lib/profile.js';
 import {createPostTemplate} from './lib/createPost.js';
 import {editPostTemplate} from './lib/editPost.js';
-import {loginGoogle} from './lib/index.js';
+import {loginGoogle, errorAD} from './lib/index.js';
 
 
 document.getElementById("root").innerHTML = singInTemplate();
@@ -31,11 +31,9 @@ const singUpBttn = () =>{
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    alert (error.message)
-    // ..
+    errorAD (errorMessage);
   });
 };
-console.log(singUpBttn)
 document.getElementById("singUpBttn").addEventListener("click",singUpBttn)
 
 //Ingreso sesión usuario
@@ -52,7 +50,7 @@ const singInBttn = () =>{
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    alert (error.message)
+    errorAD (errorMessage);  
   });
 };
 document.getElementById("singInBttn").addEventListener ("click", singInBttn);
