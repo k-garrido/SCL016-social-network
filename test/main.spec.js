@@ -1,7 +1,7 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import {singInTemplate} from './src/lib/main.js';
 
-describe('myFunction', () => {
+describe('singInTemplate', () => {
   it('debería ser una función', () => {
     expect(typeof myFunction).toBe('function');
   });

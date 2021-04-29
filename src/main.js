@@ -10,7 +10,7 @@ import {loginGoogle} from './lib/index.js';
 
 
 document.getElementById("root").innerHTML = singInTemplate();
-document.getElementById("root").innerHTML += singUpTemplate();
+// document.getElementById("root").innerHTML += singUpTemplate();
 //document.getElementById("root").innerHTML += feedTemplate();
 // document.getElementById("root").innerHTML += filterAndSeachTemplate();
 // document.getElementById("root").innerHTML += profileTemplate();
