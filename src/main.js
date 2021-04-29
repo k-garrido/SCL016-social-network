@@ -6,11 +6,12 @@ import {filterAndSeachTemplate} from './lib/filterAndSearch.js';
 import {profileTemplate} from './lib/profile.js';
 import {createPostTemplate} from './lib/createPost.js';
 import {editPostTemplate} from './lib/editPost.js';
+import {loginGoogle, errorAD} from './lib/index.js';
 
 
-// document.getElementById("root").innerHTML = singInTemplate();
+document.getElementById("root").innerHTML = singInTemplate();
 document.getElementById("root").innerHTML += singUpTemplate();
-// document.getElementById("root").innerHTML += feedTemplate();
+//document.getElementById("root").innerHTML += feedTemplate();
 // document.getElementById("root").innerHTML += filterAndSeachTemplate();
 // document.getElementById("root").innerHTML += profileTemplate();
 // document.getElementById("root").innerHTML= createPostTemplate();
@@ -30,8 +31,7 @@ const singUpBttn = () =>{
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    alert (error.message)
-    // ..
+    errorAD (errorMessage);
   });
 };
 document.getElementById("singUpBttn").addEventListener("click",singUpBttn)
@@ -50,11 +50,12 @@ const singInBttn = () =>{
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    alert (error.message)
+    errorAD (errorMessage);  
   });
 };
 document.getElementById("singInBttn").addEventListener ("click", singInBttn);
 
+// Creando el observador
 const observer = ()=>{
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -72,3 +73,7 @@ const observer = ()=>{
 };
 observer();
 
+const loginBttn= document.querySelector("#googleBttn");
+loginBttn.addEventListener ("click", ()=>{
+  loginGoogle()
+})
