@@ -1,7 +1,8 @@
 // importamos la funcion que vamos a testear
 import { singInBttn } from '../src/main.js';
-describe('singInBttn', () => {
-  it.skip('should be an object', () => {
+
+describe(singInBttn(), () => {
+  it('should be an object', () => {
     expect(singInBttn()).toBe('object');
   });
   it('...', () => {
@@ -12,4 +13,4 @@ describe('singInBttn', () => {
     const mail = 'juanitamail com';
     expect(mail).not.toMatch(/\S+@\S+\.\S+/);
   });
-});
+ 

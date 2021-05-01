@@ -1,4 +1,4 @@
-export const editPostTemplate = () =>{
+export const editPostTemplate = () => {
   const editPost = `
     <div id="editPostPage">
           <h2>Editar post</h2>
@@ -49,6 +49,6 @@ export const editPostTemplate = () =>{
             </ul>
           </form>
           </div>
-          `
-          return editPost;
-      };
+          `;
+  return editPost;
+};

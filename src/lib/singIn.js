@@ -1,7 +1,5 @@
-
-
 export const singInTemplate = () => {
-const singIn = `
+  const singIn = `
   <div id="page1">
     <p id="pageDescription" >Esta es tu red social de viajes por Chile. Comparte tus experiencias, recuerdos,
       recomendaciones y problemas,
@@ -12,11 +10,11 @@ const singIn = `
         <li id="errorMesssage"></li>
         <li class="liInput1">
           <label class="emailAndPassword" for="mail">Correo:</label>
-          <input class="inputSingIn" type="email" id="mail2" name="user_mail">
+          <input class="inputSingIn" type="email" id="mail" name="user_mail">
         </li>
         <li class="liInput1">
           <label class="emailAndPassword" for="msg">Contraseña:</label>
-          <input class="inputSingIn" type="password" id="password2" name="user_password"></input>
+          <input class="inputSingIn" type="password" id="password" name="user_password"></input>
         </li>
         <input class="googleInpt" id="googleBttn" type="button" value="Iniciar sesión con Google">
         <input class="bttn" id="singInBttn" type="button" value="Iniciar sesión">
@@ -25,7 +23,5 @@ const singIn = `
       </ul>
     </form>
   </div>
-  `
- return singIn;
- };
-
+  `; return singIn;
+};

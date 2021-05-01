@@ -1,6 +1,8 @@
+
  export const createPostTemplate = () => {
    const createPost = `
     <div id="createPostPage" class="inputForm">
+
     <h2>Crea tu post</h2>
     <form id="createPostForm">
       <ul>
@@ -48,10 +50,7 @@
         </li>                 
       </ul>
     </form>
-    </div>
-    `
-   return createPost;
- };
-
- // const database = firebase.firestore();
- 
+    </div
+    `;
+  return createPost;
+};

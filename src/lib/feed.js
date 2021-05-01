@@ -12,7 +12,6 @@ const feed = `
       <img src="./images/magnifyingGlass.png">
       <img src="./images/user.png">
     </footer>
-</div>
-`
-return feed;
+</div>`;
+  return feed;
 };

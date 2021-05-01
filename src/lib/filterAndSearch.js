@@ -23,6 +23,6 @@ export const filterAndSeachTemplate = () => {
       <p>Magallanes y la Antártica Chilena</p>
     </div>
   </div>
-</div>`
+</div>`;
   return filterAndSearch;
 };

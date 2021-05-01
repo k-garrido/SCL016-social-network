@@ -15,6 +15,6 @@ export const profileTemplate = () => {
           </li>
           </ul>
       </form>
-    </div>`
+    </div>`;
   return profile;
 };

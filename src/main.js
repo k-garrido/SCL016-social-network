@@ -1,79 +1,74 @@
-import {singInTemplate} from './lib/singIn.js';
-import {singUpTemplate} from './lib/singUp.js';
-import {feedTemplate} from './lib/feed.js';
-import {filterAndSeachTemplate} from './lib/filterAndSearch.js';
-import {profileTemplate} from './lib/profile.js';
-import {createPostTemplate} from './lib/createPost.js';
-import {editPostTemplate} from './lib/editPost.js';
-import {loginGoogle, errorAD} from './lib/index.js';
+
+import singInTemplate from './lib/singIn.js';
+import singUpTemplate from './lib/singUp.js';
+import feedTemplate from './lib/feed.js';
+import filterAndSeachTemplate from './lib/filterAndSearch.js';
+import profileTemplate from './lib/profile.js';
+import createPostTemplate from './lib/createPost.js';
+import editPostTemplate from './lib/editPost.js';
+import { loginGoogle, errorAD } from './lib/index.js';
+
+document.getElementById('root').innerHTML = singInTemplate();
+document.getElementById('root').innerHTML += singUpTemplate();
+document.getElementById('root').innerHTML += feedTemplate();
+document.getElementById('root').innerHTML += filterAndSeachTemplate();
+document.getElementById('root').innerHTML += profileTemplate();
+document.getElementById('root').innerHTML += createPostTemplate();
+document.getElementById('root').innerHTML += editPostTemplate();
 
 
-document.getElementById("root").innerHTML = singInTemplate();
-document.getElementById("root").innerHTML += singUpTemplate();
-document.getElementById("root").innerHTML += feedTemplate();
-// document.getElementById("root").innerHTML += filterAndSeachTemplate();
-// document.getElementById("root").innerHTML += profileTemplate();
- document.getElementById("root").innerHTML+= createPostTemplate();
-// document.getElementById("root").innerHTML= editPostTemplate();
+// Ingreso sesión usuario
+export const singInBttn = () => {
+  const mail = document.getElementById('mail').value;
+  const password = document.getElementById('password').value;
+  firebase.auth().signInWithEmailAndPassword(mail, password).then((userCredential) => {
+    //Signed in
+    const user = userCredential.user;
+     }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    errorAD(errorMessage);
+  });
+ };
+document.getElementById('singInBttn').addEventListener('click', singInBttn);
 
-//Registo del usuario
-const singUpBttn = () =>{
-  const mail = document.getElementById("mail").value;
-  const password = document.getElementById("password").value;
-  
-  firebase.auth().createUserWithEmailAndPassword(mail, password)
-  .then((userCredential) => {
+// Registo del usuario
+const singUpBttn = () => {
+  const mail2 = document.getElementById('mail2').value;
+  const password2 = document.getElementById('password2').value;
+  firebase.auth().createUserWithEmailAndPassword(mail2, password2).then((userCredential) => {
     // Signed in
-    var user = userCredential.user;
+    const user = userCredential.user;
     // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    errorAD (errorMessage);
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    errorAD(errorMessage);
   });
 };
-document.getElementById("singUpBttn").addEventListener("click",singUpBttn)
-
-//Ingreso sesión usuario
-const singInBttn = () =>{
-  const mail2 = document.getElementById("mail2").value;
-  const password2 = document.getElementById("password2").value;
-
-  firebase.auth().signInWithEmailAndPassword(mail2, password2)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    errorAD (errorMessage);  
-  });
-};
-document.getElementById("singInBttn").addEventListener ("click", singInBttn);
+document.getElementById('singUpBttn').addEventListener('click', singUpBttn);
 
 // Creando el observador
-const observer = ()=>{
+const observer = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
-      console.log("existe usuario activo")
-      var uid = user.uid;
+      // console.log('existe usuario activo');
+      const uid = user.uid;
       // ...
     } else {
       // User is signed out
       // ...
-      console.log("No existe usuario activo")
+      // console.log('No existe usuario activo');
     }
   });
 };
 observer();
 
+
 const loginBttn= document.querySelector("#googleBttn");
-loginBttn.addEventListener ("click", ()=>{
+loginBttn.addEventListener ("click", () => {
   loginGoogle()
 })
 
@@ -81,7 +76,7 @@ loginBttn.addEventListener ("click", ()=>{
 const database = firebase.firestore();
 const createPostFireStore=document.getElementById("createPostForm");
 const posts = document.getElementById ("postContainer")
-const savePost= (titlePost, contentPost,classPost,region)=>{
+const savePost= (titlePost,contentPost,classPost,region) => {
   database.collection('posts').doc().set({
     title: titlePost,
     content: contentPost,
@@ -89,10 +84,10 @@ const savePost= (titlePost, contentPost,classPost,region)=>{
     regionPost: region
   })
 };
-const getPost = ()=> database.collection('posts').get();
+const getPost = () => database.collection('posts').get();
 
 //comenzando a manejar la data de firebase para agregar la informacion a los posts
-window.addEventListener("DOMContentLoaded", async (e) =>{
+window.addEventListener("DOMContentLoaded", async (e) => {
   const dataFirebase = await getPost();
   dataFirebase.forEach(post => {
     const postDiv = document.createElement ("div");
