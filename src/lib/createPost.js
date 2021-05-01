@@ -1,4 +1,4 @@
- export const createPostTemplate = () => {
+export const createPostTemplate = () => {
   const createPost = `
     <div id="createPostPage">
     <h2>Crea tu post</h2>
@@ -48,7 +48,7 @@
         </li>                 
       </ul>
     </form>
-    </div>
-    `
-return createPost;
+    </div
+    `;
+  return createPost;
 };

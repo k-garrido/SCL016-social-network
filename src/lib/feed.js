@@ -1,5 +1,5 @@
 export const feedTemplate = () => {
-const feed = `
+  const feed = `
 <div id="page3">
 <div>
   <input type="button" value="Crea tu post" id="postButton">
@@ -22,7 +22,6 @@ const feed = `
     <img src="./images/magnifyingGlass.png">
     <img src="./images/user.png">
   </footer>
-</div>
-`
-return feed;
+</div>`;
+  return feed;
 };
