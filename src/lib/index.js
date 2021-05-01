@@ -27,10 +27,8 @@ export const loginGoogle = () => {
 export const errorAD = (error) => {
   const errorLi=document.getElementById("errorMesssage");
   errorLi.innerHTML=""
-  console.log (errorLi)
   const errorP=document.createElement("p")
   errorP.id = "PrintingErrorMessage"
-  console.log (errorP)
   switch (error) {
     case "The email address is badly formatted.":
       errorP.innerHTML ="Correo invalido."

@@ -1,24 +1,24 @@
  export const createPostTemplate = () => {
-  const createPost = `
-    <div id="createPostPage">
+   const createPost = `
+    <div id="createPostPage" class="inputForm">
     <h2>Crea tu post</h2>
-    <form>
+    <form id="createPostForm">
       <ul>
         <li>
-          <label for="interesting">Título</label>
+          <label id="createTitle" for="titleCreatePost">Título</label>
           <input type="text" id="titleCreatePost">
         </li>
         <li>
-          <label for="interesting">Contenido</label>
+          <label id="createIntersting" for="contents">Contenido</label>
           <textarea id="contents" cols="30" rows="10"></textarea>
         </li>
-        <li>
+        <li id="chooseRegion">
           <p>Tipo de publicación</p>
-          <input type="radio" id="recomendation" name="publicacionType" value="0"> 
+          <input type="radio" id="recomendation" name="publicationType" value="0"> 
           <label for="recomendation">Recomendación</label><br>
-          <input type="radio" id="memories" name="publicacionType" value="1">
+          <input type="radio" id="memories" name="publicationType" value="1">
           <label for="memories">Recuerdos</label><br>
-          <input type="radio" id="caution" name="publicacionType" value="2">
+          <input type="radio" id="caution" name="publicationType" value="2">
           <label for="caution">Precaución</label><br>
         </li>
         <li>
@@ -50,5 +50,8 @@
     </form>
     </div>
     `
-return createPost;
-};
+   return createPost;
+ };
+
+ // const database = firebase.firestore();
+ 
