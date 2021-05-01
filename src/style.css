@@ -135,6 +135,9 @@ header{
     background-color: #C4C4C4;
     border: none
 }
+.inptFeed{
+    margin: 10%;
+}
    
 /* #footer{
     background-color: #1D7A8C;

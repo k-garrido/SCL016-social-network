@@ -1,3 +1,4 @@
+
 import singInTemplate from './lib/singIn.js';
 import singUpTemplate from './lib/singUp.js';
 import feedTemplate from './lib/feed.js';
@@ -15,16 +16,15 @@ document.getElementById('root').innerHTML += profileTemplate();
 document.getElementById('root').innerHTML += createPostTemplate();
 document.getElementById('root').innerHTML += editPostTemplate();
 
+
 // Ingreso sesión usuario
 export const singInBttn = () => {
   const mail = document.getElementById('mail').value;
   const password = document.getElementById('password').value;
-
   firebase.auth().signInWithEmailAndPassword(mail, password).then((userCredential) => {
     //Signed in
     const user = userCredential.user;
-    
-  }).catch((error) => {
+     }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     errorAD(errorMessage);
@@ -66,7 +66,53 @@ const observer = () => {
 };
 observer();
 
-const loginBttn = document.querySelector('#googleBttn');
-loginBttn.addEventListener('click', () => {
-  loginGoogle();
-});
+
+const loginBttn= document.querySelector("#googleBttn");
+loginBttn.addEventListener ("click", () => {
+  loginGoogle()
+})
+
+//importando firebase desde firestore
+const database = firebase.firestore();
+const createPostFireStore=document.getElementById("createPostForm");
+const posts = document.getElementById ("postContainer")
+const savePost= (titlePost,contentPost,classPost,region) => {
+  database.collection('posts').doc().set({
+    title: titlePost,
+    content: contentPost,
+    typePost: classPost,
+    regionPost: region
+  })
+};
+const getPost = () => database.collection('posts').get();
+
+//comenzando a manejar la data de firebase para agregar la informacion a los posts
+window.addEventListener("DOMContentLoaded", async (e) => {
+  const dataFirebase = await getPost();
+  dataFirebase.forEach(post => {
+    const postDiv = document.createElement ("div");
+    postDiv.id= "postDiv"
+    postDiv.innerHTML = ` 
+    <div> 
+      <img src="images/${post.data().typePost}.png"
+      <input type="button" value="..." id="settings">
+    </div>
+    <figure>
+      <h3 id="postTitle">${post.data().title}</h3>
+      <img src="" id="uploadImg">
+      <figcaption id="description">${post.data().content}</figcaption>
+      <input type="button" value="¡Yo voy!" id="likeButton">
+    </figure>`;
+    posts.appendChild(postDiv);
+  });
+})
+createPostFireStore.addEventListener("submit", async (e) => {
+  e.preventDefault(); 
+  const titleCreatePost=document.getElementById("titleCreatePost").value;
+  const contents=document.getElementById("contents").value;
+  const typePost = document.querySelector('input[name="publicationType"]:checked').id;
+  const select=document.getElementById ("selectRegion").value;
+ 
+  await savePost(titleCreatePost,contents,typePost,select)
+  createPostFireStore.reset ()
+ });

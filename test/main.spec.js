@@ -13,4 +13,4 @@ describe(singInBttn(), () => {
     const mail = 'juanitamail com';
     expect(mail).not.toMatch(/\S+@\S+\.\S+/);
   });
-});
+ 
