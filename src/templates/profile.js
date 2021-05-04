@@ -1,4 +1,5 @@
 export const profileTemplate = () => {
+  const div6 = document.createElement ('div');
   const profile = `
     <div id="pageProfile">
       <h2>Editar perfil</h2>
@@ -16,5 +17,6 @@ export const profileTemplate = () => {
           </ul>
       </form>
     </div>`;
-  return profile;
+  div6.innerHTML = profile;
+  return div6;
 };

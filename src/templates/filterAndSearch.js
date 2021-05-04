@@ -1,4 +1,5 @@
 export const filterAndSeachTemplate = () => {
+  const  div5 =  document.createElement('div');
   const filterAndSearch = `
 <div id="page4">
   <input type="search" id="searchInput" placeholder="Busca en esta web">
@@ -24,5 +25,6 @@ export const filterAndSeachTemplate = () => {
     </div>
   </div>
 </div>`;
-  return filterAndSearch;
+div5.innerHTML = filterAndSearch;
+  return div5;
 };
