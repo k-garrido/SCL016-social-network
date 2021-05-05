@@ -1,7 +1,7 @@
 export const editPostTemplate = () => {
   const editPost = `
     <div id="editPostPage">
-          <h2>Editar post</h2>
+          <h2 class="title1">Editar post</h2>
           <form>
             <ul>
               <li>

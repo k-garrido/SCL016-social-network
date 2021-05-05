@@ -2,7 +2,7 @@ export const profileTemplate = () => {
   const div6 = document.createElement ('div');
   const profile = `
     <div id="pageProfile">
-      <h2>Editar perfil</h2>
+      <h2 class="title1" >Editar perfil</h2>
       <p></p>
       <form>
         <ul>

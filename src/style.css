@@ -6,6 +6,10 @@
     font-family: Sen-Bold;
     src: url(./fonts/Sen-Bold.ttf)   
 }
+@font-face{
+    font-family: Piedra-Regular;
+    src: url(./fonts/Piedra-Regular.ttf)   
+}
 *{
     box-sizing: border-box;
 }
@@ -138,7 +142,42 @@ header{
 .inptFeed{
     margin: 10%;
 }
-   
+.inptFeed{
+    display:flex;
+    background-color:#1D7A8C;
+    color:#EEE8A9;
+    border: 1px solid #1D7A8C;
+    border-radius: 5px;
+    
+      
+}
+.likeButton{
+    background-color: white;
+    color: #000000;
+    border: 1px solid #1D7A8C;
+    border-radius: 5px;  
+    font-family: Piedra-regular;  
+
+}
+.containerPostDiv{
+    display:flex;
+    justify-content: center;
+}
+
+.createPostUl{
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+.imgPin{
+    width: 10%;
+}
+
+
 /* #footer{
     background-color: #1D7A8C;
     display: flex;
@@ -147,4 +186,3 @@ header{
     margin-bottom:-3% ;
     padding: 0;
 } */
-

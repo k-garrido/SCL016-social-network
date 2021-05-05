@@ -28,16 +28,22 @@ export const feedTemplate = () => {
       const postDiv = document.createElement ("div");
       postDiv.id= "postDiv"
       postDiv.innerHTML = ` 
-      <div> 
-        <img src="images/${post.data().typePost}.png"
-        <input type="button" value="..." id="settings">
-      </div>
-      <figure>
-        <h3 id="postTitle">${post.data().title}</h3>
-        <img src="" id="uploadImg">
-        <figcaption id="description">${post.data().content}</figcaption>
-        <input type="button" value="¡Yo voy!" id="likeButton">
-      </figure>`;
+      <div class="containerPostDiv">
+    <img src="../images/${post.data().typePost}.png" class="imgPin">
+    <h3 id="postTitle">${post.data().title}</h3>
+    <select id="selectEditDelete">
+      <option value="">...</option>
+      <option class="bottonEdit" value="edit">Editar</option>
+      <option class="bottonDelete" value="delete">Borrar</option>
+     </select> 
+  </div>
+  <figure>
+    <img id="uploadImg">
+    <figcaption id="regionId">${post.data().regionPost}</figcaption>
+    <figcaption id="description">${post.data().content}</figcaption>
+    //<img src="" id="imgId" >${post.data().imagePost}</img>
+    <input class="likeButton" type="button" value="¡Yo voy!" id="likeButton">
+  </figure>`;
       posts.appendChild(postDiv);
     });
     return postDiv

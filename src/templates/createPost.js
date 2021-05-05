@@ -1,12 +1,11 @@
 import { firestoreCollection } from '../lib/firebase.js'
-
 export const createPostTemplate = () => {
   const div4 = document.createElement('div')
   const createPost = `
     <div id="createPostPage" class="inputForm">
-      <h2>Crea tu post</h2>
+      <h2 class="title1" >Crea tu post</h2>
       <form id="createPostForm">
-        <ul>
+        <ul class="createPostUl">
           <li>
             <label id="createTitle" for="titleCreatePost">Título</label>
             <input type="text" id="titleCreatePost">
@@ -15,17 +14,20 @@ export const createPostTemplate = () => {
             <label id="createIntersting" for="contents">Contenido</label>
             <textarea id="contents" cols="30" rows="10"></textarea>
           </li>
-          <li id="chooseRegion">
-            <p>Tipo de publicación</p>
-            <input type="radio" id="recomendation" name="publicationType" value="0"> 
-            <label for="recomendation">Recomendación</label><br>
-            <input type="radio" id="memories" name="publicationType" value="1">
-            <label for="memories">Recuerdos</label><br>
-            <input type="radio" id="caution" name="publicationType" value="2">
-            <label for="caution">Precaución</label><br>
-          </li>
+          <li class="createPostLi" id="chooseRegion">
+          <p>Tipo de publicación</p>
+          <img src="./images/recomendation.png" class="imgPin">
+          <input type="radio" id="recomendation" name="publicationType" value="0"> 
+          <label for="recomendation">Recomendación</label><br>
+          <img src="./images/memories.png" class="imgPin">
+          <input type="radio" id="memories" name="publicationType" value="1">
+          <label for="memories">Recuerdos</label><br>
+          <img src="./images/caution.png" class="imgPin">
+          <input type="radio" id="caution" name="publicationType" value="2">
+          <label for="caution">Precaución</label><br>
+        </li>
           <li>
-            <select id="selectRegion">
+            <select class="bttn" id="selectRegion">
                 <option value="">Selecciona tu región</option>
                 <option value="aricaParinacota">Arica y Parinacota</option>
                 <option value="tarapaca">Tarapacá</option>
@@ -46,15 +48,15 @@ export const createPostTemplate = () => {
             </select>
           </li>
           <li>
-            <input type="file" id="uploadFilePost" accept ="image/x-png,image/gif,image/jpeg">
-            <input type="submit" value="Subir post">
+          <label class="uploadFilePost" for="imgPst">Imagen</label>
+          <input type="file" id="imgPst" accept="image/x-png,image/gif,image/jpeg">
+          <input class="bttn" type="submit" value="Subir post">
           </li>                 
         </ul>
       </form>
     </div
     `;
   div4.innerHTML = createPost;
-
   //Utilizando firestore para subir los posts.
   const createPostFireStore = div4.querySelector("#createPostForm");
   createPostFireStore.addEventListener("submit", async (e) => {
@@ -62,10 +64,17 @@ export const createPostTemplate = () => {
     const titleCreatePost = div4.querySelector('#titleCreatePost').value;
     const contents = div4.querySelector('#contents').value;
     const typePost = div4.querySelector('input[name="publicationType"]:checked').id;
-    const select = div4.querySelector('#selectRegion').value;
-
-    await firestoreCollection(titleCreatePost, contents, typePost, select)
+    const select = div4.querySelector('#selectRegion');
+    const selectRgn = select.options[select.selectedIndex].text;
+    await uploadImages();
+    await firestoreCollection(titleCreatePost, contents, typePost, selectRgn)
     createPostFireStore.reset()
   });
+  // const storage = firebase.storage();
+  const uploadImages = () => {
+  const uploadImg = document.getElementById('imgPst');
+  const file = uploadImg.files[0];
+  console.log(file);
+};
   return div4;
 };
