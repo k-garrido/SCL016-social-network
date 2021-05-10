@@ -1,6 +1,9 @@
 export const profileTemplate = () => {
   const div6 = document.createElement ('div');
   const profile = `
+    <header class="headerSecondary">
+    <img src="./images/Logo.png" class="logo">
+    </header>
     <div id="pageProfile">
       <h2 class="title1" >Editar perfil</h2>
       <p></p>

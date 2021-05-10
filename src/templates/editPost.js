@@ -1,5 +1,8 @@
 export const editPostTemplate = () => {
   const editPost = `
+    <header class="headerSecondary">
+    <img src="./images/Logo.png" class="logo">
+    </header>
     <div id="editPostPage">
           <h2 class="title1">Editar post</h2>
           <form>

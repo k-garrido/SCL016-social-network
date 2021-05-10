@@ -1,10 +1,8 @@
+
+//Funcion para mostrar los mensajes de error
 export const errorAD = (error) => {
-  const errorLi = document.getElementById('errorMesssage');
-  errorLi.innerHTML = '';
-  // console.log (errorLi);
   const errorP = document.createElement('p');
   errorP.id = 'PrintingErrorMessage';
-  // console.log (errorP);
   switch (error) {
     case 'The email address is badly formatted.':
       errorP.innerHTML = 'Correo inválido.';
@@ -22,9 +20,13 @@ export const errorAD = (error) => {
       errorP.innerHTML = 'El correo ya está siendo usado en otra cuenta.';
       break;
     default:
-      // console.log ('No hay ningún error');
+      console.log ('Error desconocido');
       break;
   }
-  errorLi.appendChild(errorP);
   return errorP;
 };
+
+//Funcion para cambiar el hash
+export const changeHash = (hash) =>  {
+  location.hash = hash;
+}

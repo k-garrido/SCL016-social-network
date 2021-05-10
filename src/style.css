@@ -17,16 +17,16 @@ body{
     margin: 0;
     font-family: Sen-Regular;
 }
-header{
+.headerSecondary{
     background-color: #1D7A8C;
-    padding: 6%;
+    padding: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
-    #logo{
-        width: 50%;
+    .logo{
+        width:30%;
         max-width: 200px;
     }
 #page1{
@@ -35,7 +35,19 @@ header{
     align-items: center;
     width: 100%;
 }
-    #pageDescription{
+    #principalHeader{
+        background-color: #1D7A8C;
+        padding: 6%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+        #logoPage1{
+            width: 50%;
+            max-width: 200px;
+        }
+    .pageText{
         text-align: center;
         background-color: #1D7A8C;
         color: #EEE8A9;
@@ -95,7 +107,7 @@ header{
                     width: 100%;
                     height: 30px;
                     margin: 10%;
-                    background-color: #C4C4C4;
+                    background-color: #C4C  4C4;
                     border: none
                 }
                 .googleInpt{
@@ -124,46 +136,125 @@ header{
                     border-radius: 5px;  
                     font-family: Sen-Bold;  
                 }
-             
-
+                #register{
+                    width: 100%;
+                    margin-bottom: 10%;
+                }
+                    #ancla{
+                        width: 75%;
+                    }
 #page2{
     display: flex;
     flex-flow: nowrap column;
     align-items: center;
     width: 100%;
 }
-.inputSingUp{
-    width: 100%;
-    height: 30px;
-    margin: 10%;
-    background-color: #C4C4C4;
-    border: none
-}
-.inptFeed{
-    margin: 10%;
-}
-.inptFeed{
-    display:flex;
-    background-color:#1D7A8C;
-    color:#EEE8A9;
-    border: 1px solid #1D7A8C;
-    border-radius: 5px;
-    
-      
-}
-.likeButton{
-    background-color: white;
-    color: #000000;
-    border: 1px solid #1D7A8C;
-    border-radius: 5px;  
-    font-family: Piedra-regular;  
+    .inputSingUp{
+        width: 100%;
+        height: 30px;
+        margin: 10%;
+        background-color: #C4C4C4;
+        border: none
+    }
+    #singUpBttn{
+        margin-bottom: 10%;
+    }
 
+#page3{
+    display: flex;
+    flex-flow: column nowrap;
 }
-.containerPostDiv{
-    display:flex;
-    justify-content: center;
-}
+    #inputDiv{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        align-content: space-between;
+        margin: 1%;
+        width: 100%;
+    }
+        .anclaFeed{
+            width: 40%;
+            margin:2%
+        }
+            .inptFeed{
+                background-color:#1D7A8C;
+                color:#EEE8A9;
+                border-radius: 9px;
+                margin: 0;
+                width: 100%;
+                height: 40px;
+                font-family: Sen-Bold;
+                font-size: 130%;
+            }
+    #postContainer{
+        width: 100%;
+    }
+        #postDiv{
+            width: 100%;
+        }
+            #divPosts{
+                display: grid;
+                grid-template-columns: repeat(10, 10%);
+                grid-template-rows: repeat(10, 10%);
+                margin:0;
+                place-items: center;
+                place-content: center;
+                border: 1px solid #000000;
+                height: 400px;
+                width: 100%;
+            }
+            .imgPin{
+                grid-area: 1/1/3/3;
+                width: 50%;
+            }
+            #postTitle{
+                grid-area: 2/3/3/9;
+                font-size: 1em;
+                margin: 0;
+            }
+            #selectEditDelete{
+                grid-area: 1/9/2/11;
+                align-self: flex-start;
+                justify-self: flex-end;
+            }
+            #uploadImg{
+                grid-area: 3/3/7/9; 
+                width: 100%;
+                background-color: grey;
+                border: 1px solid #000000;
+            }
+            #description{
+                grid-area: 7/2/10/10;
+                width: 100%;
+                margin: 0;
+                font-size: 80%;
+                text-align: justify;
+            }
 
+            #likeButton{
+                background-color: white;
+                color: #000000;
+                border: 1px solid #1D7A8C;
+                border-radius: 10px;  
+                font-family: Piedra-regular;  
+                grid-area: 10/9/11/11;
+                width: 90%;
+                height: 30px;
+                background-image: url("images/yoVoy.png");
+                background-size: 30%;
+                background-repeat: no-repeat;
+                background-position: right;
+                text-align: left;
+            }
+            #regionId{
+                grid-area: 10/1/11/5;
+            }
+#singOutProfile{
+    width: 20%;
+    position: sticky;
+    bottom: 0;
+}
 .createPostUl{
     display: flex;
     flex-flow: nowrap column;
@@ -173,16 +264,43 @@ header{
     margin: 0;
     
 }
-.imgPin{
-    width: 10%;
-}
 
 
-/* #footer{
+
+.footer1{
     background-color: #1D7A8C;
-    display: flex;
     justify-content: space-between;
     margin: 0;
-    margin-bottom:-3% ;
-    padding: 0;
-} */
+    padding: 0.5%;
+    width: 100%;
+}
+    .footerText{
+        padding-top: 10%;
+        text-align: center;
+        background-color: #1D7A8C;
+        color: #EEE8A9;
+        padding: 0;
+        width: 100%;
+        font-size: 100%;
+    }
+
+.footer2{
+    width: 100%;
+    display: flex;   
+    justify-content: space-between;
+    background-color: #1D7A8C;
+    margin: 0;
+    padding: 0.5%;
+    position: sticky;
+    bottom: 0;
+}
+    .anclaFooter{
+        width: 10%;
+    }
+        .imgFooter{
+            width: 100%;
+        }
+        #userInpt{
+            width: 10%;
+        }
+       

@@ -1,31 +1,11 @@
-import { errorAD } from './index.js';
 
 // Ingreso sesión usuario
-export const singInBttn = () => {
-  const mail = document.getElementById('mail').value;
-  const password = document.getElementById('password').value;
-  firebase.auth().signInWithEmailAndPassword(mail, password).then((userCredential) => {
-    //Signed in
-    const user = userCredential.user;
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    errorAD(errorMessage)    
-  });
-};
+export const singInBttn = (mail, password) =>
+  firebase.auth().signInWithEmailAndPassword(mail, password)
 
 // Registo del usuario
-export const singUpBttn= (mail2, password2) =>{
-  firebase.auth().createUserWithEmailAndPassword(mail2, password2).then((userCredential) => {
-    // Signed in
-    const user = userCredential.user; 
-    // ...
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-   console.log (errorMessage)
-  });
-}
+export const singUpBttn = (mail2, password2) =>
+  firebase.auth().createUserWithEmailAndPassword(mail2, password2)
 
 // Login con Google
 export const loginGoogle = () => {
@@ -35,7 +15,6 @@ export const loginGoogle = () => {
     .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
       const credential = result.credential;
-
       // This gives you a Google Access Token. You can use it to access the Google API.
       const token = credential.accessToken;
       // The signed-in user info.
@@ -54,33 +33,46 @@ export const loginGoogle = () => {
 };
 
 // Creando el observador
- export const observer = () => {
+ export const activeUser = (callback) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      console.log('existe usuario activo');
-      const uid = user.uid;
-      // ...
+      callback('#/Muro')
+    console.log ("usuario activo")
     } else {
-      // User is signed out
-      // ...
-      console.log('No existe usuario activo');
+      callback('#/IniciarSesion')
+      console.log ("usuario no activo")
     }
   });
 };
+//Funcion para desconectarse 
+export const signOut = () => firebase.auth().signOut();
 
 //Firestore, creando coleccion
-export const firestoreCollection = (titlePost,contentPost,classPost,region)=>{
-  const database = firebase.firestore();
-  const savePost= (titlePost,contentPost,classPost,region) => {
-    database.collection('posts').doc().set({
-      title: titlePost,
-      content: contentPost,
-      typePost: classPost,
-      regionPost: region
+export const savePost = (titlePost,contentPost,classPost,region) =>{
+    return firebase.firestore().collection('posts').add({
+    title: titlePost,
+    content: contentPost,
+    typePost: classPost,
+    regionPost: region,
+    date: new Date()
+})
+};
+
+//Funcion para obtener  nuestros posts ya creados desde firestore 
+export const getPost = () =>
+  firebase.firestore().collection('posts').get()
+
+  export const getRealTimePost = (callback) => {
+    const allPosts = firebase.firestore().collection('posts').orderBy('date', 'desc');
+    allPosts.onSnapshot(snapshot => {
+      const posts = []
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        posts.push({ id: doc.id, doc: data });
+      })
+      callback(posts)
     })
-  };
-  return savePost(titlePost,contentPost,classPost,region)
-}
+  }
+
+
 

@@ -1,7 +1,10 @@
-import { firestoreCollection } from '../lib/firebase.js'
+import { savePost } from '../lib/firebase.js'
 export const createPostTemplate = () => {
   const div4 = document.createElement('div')
   const createPost = `
+    <header class="headerSecondary">
+    <img src="./images/Logo.png" class="logo">
+    </header>
     <div id="createPostPage" class="inputForm">
       <h2 class="title1" >Crea tu post</h2>
       <form id="createPostForm">
@@ -67,7 +70,7 @@ export const createPostTemplate = () => {
     const select = div4.querySelector('#selectRegion');
     const selectRgn = select.options[select.selectedIndex].text;
     await uploadImages();
-    await firestoreCollection(titleCreatePost, contents, typePost, selectRgn)
+    await savePost (titleCreatePost, contents, typePost, selectRgn)
     createPostFireStore.reset()
   });
   // const storage = firebase.storage();
