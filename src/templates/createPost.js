@@ -1,4 +1,6 @@
 import { savePost } from '../lib/firebase.js'
+import { signOut } from '../lib/firebase.js'
+import { changeHash } from '../lib/index.js'
 export const createPostTemplate = () => {
   const div4 = document.createElement('div')
   const createPost = `
@@ -8,7 +10,7 @@ export const createPostTemplate = () => {
     <div id="createPostPage" class="inputForm">
       <h2 class="title1" >Crea tu post</h2>
       <form id="createPostForm">
-        <ul class="createPostUl">
+        <ul class="createPostUl" id="inputList">
           <li>
             <label id="createTitle" for="titleCreatePost">Título</label>
             <input type="text" id="titleCreatePost">
@@ -21,15 +23,15 @@ export const createPostTemplate = () => {
           <p>Tipo de publicación</p>
           <img src="./images/recomendation.png" class="imgPin">
           <input type="radio" id="recomendation" name="publicationType" value="0"> 
-          <label for="recomendation">Recomendación</label><br>
+          <label for="recomendation" class="inputRadio">Recomendación</label><br>
           <img src="./images/memories.png" class="imgPin">
           <input type="radio" id="memories" name="publicationType" value="1">
-          <label for="memories">Recuerdos</label><br>
+          <label for="memories" class="inputRadio">Recuerdos</label><br>
           <img src="./images/caution.png" class="imgPin">
           <input type="radio" id="caution" name="publicationType" value="2">
-          <label for="caution">Precaución</label><br>
+          <label for="caution" class="inputRadio">Precaución</label><br>
         </li>
-          <li>
+          <li id="chooseRegion">
             <select class="bttn" id="selectRegion">
                 <option value="">Selecciona tu región</option>
                 <option value="aricaParinacota">Arica y Parinacota</option>
@@ -57,7 +59,13 @@ export const createPostTemplate = () => {
           </li>                 
         </ul>
       </form>
+      <footer class="footer2">
+    <a class="anclaFooter" href="javascript:location.reload()"><img class="imgFooter" src="../images/home.png"></a>
+    <a class="anclaFooter" href="#/Filtrar&Buscar"><img class="imgFooter" src="../images/magnifyingGlass.png"></a>
+    <ul id= "singOutProfile"><img id="userInpt"  src="../images/user.png"></ul>
+    </footer>
     </div
+    
     `;
   div4.innerHTML = createPost;
   //Utilizando firestore para subir los posts.
@@ -79,5 +87,27 @@ export const createPostTemplate = () => {
   const file = uploadImg.files[0];
   console.log(file);
 };
+  const userInpt= div4.querySelector('#userInpt')
+  const singOutProfile = div4.querySelector('#singOutProfile'); 
+  userInpt.addEventListener ('click', () =>{
+    userInpt.s
+    const singOutBttn = document.createElement('LI')
+    singOutBttn.className= 'profileFeed'
+    singOutBttn.textContent= 'Desconectarse'
+    singOutBttn.addEventListener('click',() =>{
+      signOut()
+      changeHash ('#/IniciarSesion')
+    }) 
+    const viewProfile = document.createElement('LI')
+    viewProfile.className= 'profileFeed'
+    viewProfile.textContent='Ver mi perfil'
+    viewProfile.addEventListener('click',() =>{
+      changeHash ('#/Perfil')
+    })
+
+    singOutProfile.insertBefore(singOutBttn,userInpt)
+    singOutProfile.insertBefore(viewProfile,userInpt)
+  })
+
   return div4;
 };

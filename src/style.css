@@ -250,20 +250,51 @@ body{
             #regionId{
                 grid-area: 10/1/11/5;
             }
-#singOutProfile{
-    width: 20%;
-    position: sticky;
-    bottom: 0;
-}
-.createPostUl{
+#createPostPage{
     display: flex;
-    flex-flow: nowrap column;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
+    flex-flow: column nowrap;
+    width: 100%;
 }
+    #createPostForm{
+        width: 100%;
+    }
+
+        .createPostUl{
+            display: flex;
+            flex-flow: nowrap column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        #inputList li{
+            display: flex;
+            flex-flow:  row nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            margin: 1%;
+            padding: 5%;
+            padding-bottom: 1%;
+            padding-top: 1%;
+        }
+           
+            #titleCreatePost{
+                width: 72%;
+            }
+            #inputList li img{
+                width: 5%;
+            }
+            #inputList li p{
+                font-size: 50%;
+            }
+            .inputRadio{
+                font-size: 70%;
+            }
+            #chooseRegion{
+                justify-self: center;
+            }
 
 
 
@@ -286,6 +317,7 @@ body{
 
 .footer2{
     width: 100%;
+    height: 50px;
     display: flex;   
     justify-content: space-between;
     background-color: #1D7A8C;
@@ -301,6 +333,17 @@ body{
             width: 100%;
         }
         #userInpt{
-            width: 10%;
+            width: 100%;
         }
-       
+        #singOutProfile{
+            margin: 0;
+            padding: 0;
+            width: 10%; 
+        }
+            .profileFeed{
+                list-style: none;
+                color: white;
+                border: 1px solid black;
+                position: relative
+            }
+        

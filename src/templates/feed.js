@@ -57,17 +57,20 @@ export const feedTemplate = () => {
   const userInpt= div3.querySelector('#userInpt')
   const singOutProfile = div3.querySelector('#singOutProfile'); 
   userInpt.addEventListener ('click', () =>{
+    userInpt.s
     const singOutBttn = document.createElement('LI')
+    singOutBttn.className= 'profileFeed'
     singOutBttn.textContent= 'Desconectarse'
-    // signOutBttn.addEventListener('click',() =>{
-    //   signOut()
-    //   changeHash ('#/IniciarSesion')
-    // }) 
+    singOutBttn.addEventListener('click',() =>{
+      signOut()
+      changeHash ('#/IniciarSesion')
+    }) 
     const viewProfile = document.createElement('LI')
+    viewProfile.className= 'profileFeed'
     viewProfile.textContent='Ver mi perfil'
-    // viewProfile.addEventListener('click',() =>{
-    //   changeHash ('#/Perfil')
-    // })
+    viewProfile.addEventListener('click',() =>{
+      changeHash ('#/Perfil')
+    })
 
     singOutProfile.insertBefore(singOutBttn,userInpt)
     singOutProfile.insertBefore(viewProfile,userInpt)

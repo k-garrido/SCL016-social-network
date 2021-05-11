@@ -1,6 +1,4 @@
 import { changingRoute } from './lib/router.js';
-import { activeUser } from './lib/firebase.js'
-import { changeHash } from './lib/index.js'
 
 const startginRoutes = () => {
     window.addEventListener('hashchange', () => {
@@ -8,7 +6,6 @@ const startginRoutes = () => {
     })
 };
 window.addEventListener("load", () => {
-    activeUser(changeHash)
     changingRoute(window.location.hash)
     startginRoutes()
 });
