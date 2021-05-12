@@ -1,5 +1,6 @@
-import { getPost, signOut } from '../lib/firebase.js'
+import { getPost, signOut, deletePostFirebase } from '../lib/firebase.js'
 import { changeHash } from '../lib/index.js'
+import { editPostTemplate } from '../templates/editPost.js'
 
 export const feedTemplate = () => {
   const div3 = document.createElement('div')
@@ -27,54 +28,83 @@ export const feedTemplate = () => {
 
   //Comenzando a manejar la data de firebase para agregar la informacion a los posts.
   const posts = div3.querySelector('#postContainer')
-  const addingPosts = async () => {
-    const dataFirebase = await getPost();
-    dataFirebase.forEach(post => {
-      const postDiv = document.createElement("div");
-      postDiv.id = "postDiv"
-      postDiv.innerHTML = ` 
-        <div id="divPosts">
-          <img src="../images/${post.data().typePost}.png" class="imgPin">
-          <h3 id="postTitle">${post.data().title}</h3>
-          <select id="selectEditDelete">
-            <option value="">...</option>
-            <option class="bottonEdit" value="edit">Editar</option>
-            <option class="bottonDelete" value="delete">Borrar</option>
-          </select>
+  const addingPosts = () => {
+    getPost((querySnapshot) => {
+      posts.innerHTML=''
+      querySnapshot.forEach(post => {
+        const postDiv = document.createElement("div");
+        postDiv.id = "postDiv"
+        postDiv.innerHTML = ` 
+          <div id="divPosts">
+            <img src="../images/${post.data().typePost}.png" class="imgPin">
+            <h3 id="postTitle">${post.data().title}</h3>
+            <div id="selectEditDelete">
+              <p>...</p>
+            </div>
             <div id="uploadImg"></div>
             <p id="regionId">${post.data().regionPost}</p>
             <p id="description">${post.data().content}</p>
             <input class="likeButton" type="button" value="¡Yo voy!" id="likeButton">
-          
-        </div>
-        `;  
-      posts.appendChild(postDiv);
-    });
-    return postDiv
+          </div>
+          `;
+        posts.appendChild(postDiv);
+
+        //Creando los botones  para editar y borrar
+        const delete_edit = postDiv.querySelector('#selectEditDelete');
+        delete_edit.addEventListener('click', () => {  
+          delete_edit.innerHTML = ''
+
+          const deletePost = document.createElement('div')
+          deletePost.textContent = 'Borrar'
+          delete_edit.appendChild(deletePost)
+          deletePost.addEventListener('click', ()=>{
+            deletePostFirebase(post.id)
+          })
+
+          const editPost = document.createElement('edit')
+          editPost.textContent = 'Editar'
+          delete_edit.appendChild(editPost)
+          editPost.addEventListener('click', ()=>{
+           
+           editPostTemplate (post.id)
+            
+
+          })
+
+        })
+        return postDiv
+
+      })
+    })
+
+
   };
   addingPosts()
 
-  const userInpt= div3.querySelector('#userInpt')
-  const singOutProfile = div3.querySelector('#singOutProfile'); 
-  userInpt.addEventListener ('click', () =>{
+  //Creando la funcionalidad para desconectarse y  la ruta al perfil del usuario.
+  const userInpt = div3.querySelector('#userInpt');
+  const singOutProfile = div3.querySelector('#singOutProfile');
+  userInpt.addEventListener('click', () => {
     userInpt.s
-    const singOutBttn = document.createElement('LI')
-    singOutBttn.className= 'profileFeed'
-    singOutBttn.textContent= 'Desconectarse'
-    singOutBttn.addEventListener('click',() =>{
+    const singOutBttn = document.createElement('LI');
+    singOutBttn.className = 'profileFeed'
+    singOutBttn.textContent = 'Desconectarse'
+    singOutBttn.addEventListener('click', () => {
       signOut()
-      changeHash ('#/IniciarSesion')
-    }) 
+      changeHash('#/IniciarSesion')
+    })
     const viewProfile = document.createElement('LI')
-    viewProfile.className= 'profileFeed'
-    viewProfile.textContent='Ver mi perfil'
-    viewProfile.addEventListener('click',() =>{
-      changeHash ('#/Perfil')
+    viewProfile.className = 'profileFeed'
+    viewProfile.textContent = 'Ver mi perfil'
+    viewProfile.addEventListener('click', () => {
+      changeHash('#/Perfil')
     })
 
-    singOutProfile.insertBefore(singOutBttn,userInpt)
-    singOutProfile.insertBefore(viewProfile,userInpt)
-  })
+    singOutProfile.insertBefore(singOutBttn, userInpt)
+    singOutProfile.insertBefore(viewProfile, userInpt)
+  });
+
+
 
   return div3;
 };

@@ -55,7 +55,7 @@ export const createPostTemplate = () => {
           <li>
           <label class="uploadFilePost" for="imgPst">Imagen</label>
           <input type="file" id="imgPst" accept="image/x-png,image/gif,image/jpeg">
-          <input class="bttn" type="submit" value="Subir post">
+          <input class="bttn" type="submit" value="Subir post">e
           </li>                 
         </ul>
       </form>
@@ -64,7 +64,7 @@ export const createPostTemplate = () => {
     <a class="anclaFooter" href="#/Filtrar&Buscar"><img class="imgFooter" src="../images/magnifyingGlass.png"></a>
     <ul id= "singOutProfile"><img id="userInpt"  src="../images/user.png"></ul>
     </footer>
-    </div
+    </div>
     
     `;
   div4.innerHTML = createPost;
@@ -80,17 +80,18 @@ export const createPostTemplate = () => {
     await uploadImages();
     await savePost (titleCreatePost, contents, typePost, selectRgn)
     createPostFireStore.reset()
+    changeHash('#/Muro')
   });
   // const storage = firebase.storage();
   const uploadImages = () => {
   const uploadImg = document.getElementById('imgPst');
   const file = uploadImg.files[0];
-  console.log(file);
+  
 };
+  //Dando funcionalidad a los botones del footer
   const userInpt= div4.querySelector('#userInpt')
   const singOutProfile = div4.querySelector('#singOutProfile'); 
   userInpt.addEventListener ('click', () =>{
-    userInpt.s
     const singOutBttn = document.createElement('LI')
     singOutBttn.className= 'profileFeed'
     singOutBttn.textContent= 'Desconectarse'

@@ -217,7 +217,12 @@ body{
                 grid-area: 1/9/2/11;
                 align-self: flex-start;
                 justify-self: flex-end;
+                border: 1px solid #000000;
             }
+                #selectEditDelete p{
+                    margin: 0;
+                    text-align: center;
+                }
             #uploadImg{
                 grid-area: 3/3/7/9; 
                 width: 100%;
