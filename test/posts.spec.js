@@ -1,4 +1,3 @@
-
 import MockCloudFirebase from 'mock-cloud-firestore';
 import { savePost } from '../src/lib/firebase.js';
 

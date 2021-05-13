@@ -1,9 +1,8 @@
-import { singUpBttn } from '../lib/firebase.js'
-import { loginGoogle } from '../lib/firebase.js'
-import { errorAD, changeHash} from '../lib/index.js'
+import { singUpBttn, loginGoogle } from '../lib/firebase.js';
+import { errorAD, changeHash } from '../lib/index.js';
 
 export const singUpTemplate = () => {
-  const div2 = document.createElement ("div")
+  const div2 = document.createElement('div');
   const singUp = `
   <header class="headerSecondary">
     <img src="./images/Logo.png" class="logo">
@@ -36,27 +35,23 @@ export const singUpTemplate = () => {
   <p class="footerText">Desarrolladoras: Katherinne Garrido <br> Gisela Donoso</p>
   </footer>
     `;
-    div2.innerHTML = singUp;
+  div2.innerHTML = singUp;
 
-  //Dandole funcionalidad al boton de registrarse.
-  div2.querySelector("#singUpBttn").addEventListener('click',()=>{
+  // Dandole funcionalidad al boton de registrarse.
+  div2.querySelector('#singUpBttn').addEventListener('click', () => {
     const mail2 = div2.querySelector('#mail2').value;
     const password2 = div2.querySelector('#password2').value;
-    singUpBttn(mail2,password2)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      changeHash ('#/IniciarSesion')
-
-    }).catch((error) => {
-      const errorMessage = error.message;
-      const errorLi2 = div2.querySelector ('#errorMessage2')
-      errorLi2.innerHTML = ''
-      errorLi2.appendChild(errorAD(errorMessage)) 
-    });
-  })
-  //Dandole funcionalidad al boton de registrate con Google.
-  div2.querySelector('#googleBttn2').addEventListener('click', loginGoogle)
-  
+    singUpBttn(mail2, password2)
+      .then(() => {
+        changeHash('#/IniciarSesion');
+      }).catch((error) => {
+        const errorMessage = error.message;
+        const errorLi2 = div2.querySelector('#errorMessage2');
+        errorLi2.innerHTML = '';
+        errorLi2.appendChild(errorAD(errorMessage));
+      });
+  });
+  // Dandole funcionalidad al boton de registrate con Google.
+  div2.querySelector('#googleBttn2').addEventListener('click', loginGoogle);
   return div2;
-
 };

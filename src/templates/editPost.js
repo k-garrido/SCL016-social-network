@@ -1,15 +1,15 @@
-import { getPostByID, editPostFirebase } from '../lib/firebase.js'
-import { changeHash } from '../lib/index.js'
+import { getPostByID, editPostFirebase } from '../lib/firebase.js';
+import { changeHash } from '../lib/index.js';
 
 export const editPostTemplate = (id) => {
-  const div7 = document.createElement('div')
+  const div7 = document.createElement('div');
   const editPost = `
   <header class="headerSecondary">
   <img src="./images/Logo.png" class="logo">
   </header>
   <div id="createPostPage" class="inputForm">
     <h2 class="title1" >Editar post</h2>
-    <form id="createPostForm">
+    <form id="editPostForm">
       <ul class="createPostUl" id="inputList">
         <li>
           <label id="createTitle" for="titleCreatePost">Título</label>
@@ -55,7 +55,7 @@ export const editPostTemplate = (id) => {
         <li>
         <label class="uploadFilePost" for="imgPst">Imagen</label>
         <input type="file" id="imgPst" accept="image/x-png,image/gif,image/jpeg">
-        <input class="bttn" id="saveChanges" type="submit" value="Guardar cambios">e
+        <button class="bttn" id="saveChanges" value="Guardar cambios"></button>
         </li>                 
       </ul>
     </form>
@@ -67,49 +67,43 @@ export const editPostTemplate = (id) => {
   </div>
   `;
   div7.innerHTML = editPost;
-  const root = document.getElementById('root')
-  root.innerHTML = ''
-  root.appendChild(div7)
+  const root = document.getElementById('root');
+  root.innerHTML = '';
+  root.appendChild(div7);
 
-  //Pasando la informacion del post que se necesita editar a nuestros imputs
-  const editTitle = div7.querySelector('#titleCreatePost')
-  const editContent = div7.querySelector('#contents')
+  // Pasando la informacion del post que se necesita editar a nuestros imputs
+  const editTitle = div7.querySelector('#titleCreatePost');
+  const editContent = div7.querySelector('#contents');
   getPostByID(id)
     .then((post) => {
-      const postData = post.data()
-      editTitle.value = postData.title
-      editContent.value = postData.content
+      const postData = post.data();
+      editTitle.value = postData.title;
+      editContent.value = postData.content;
       if (postData.typePost === 'recomendation') {
-        const recomendationInpt = div7.querySelector('#recomendation')
-        recomendationInpt.setAttribute('checked', true)
-      } else if (postData.typePost === memories) {
-        const memoriesInpt = div7.querySelector('#memories')
-        memoriesInpt.setAttribute('checked', true)
-      } else {
-        const cautionInpt = div7.querySelector('#caution')
-        cautionInpt.setAttribute('checked', true)
+        const recomendationInpt = div7.querySelector('#recomendation');
+        recomendationInpt.setAttribute('checked', true);
+      } else if (postData.typePost === 'memories') {
+        const memoriesInpt = div7.querySelector('#memories');
+        memoriesInpt.setAttribute('checked', true);
+      } else if (postData.typePost === 'caution') {
+        const cautionInpt = div7.querySelector('#caution');
+        cautionInpt.setAttribute('checked', true);
       }
 
-      //Guardando los cambios en firebase
-      const saveChanges = div7.querySelector('#saveChanges')
-      saveChanges.addEventListener('click', () => {
-        const typePost = div7.querySelector('input[name="publicationType"]:checked').id;
+      // Guardando los cambios en firebase
+      const saveChanges = div7.querySelector('#saveChanges');
+      saveChanges.addEventListener('click', (e) => {
+        e.stopImmediatePropagation;
+        const editTypePost = div7.querySelector('input[name="publicationType"]:checked').id;
         const select = div7.querySelector('#selectRegion');
         const selectRgn = select.options[select.selectedIndex].text;
         editPostFirebase(id, {
           title: editTitle.value,
           content: editContent.value,
-          typePost: typePost,
+          typePost: editTypePost,
           regionPost: selectRgn,
-        })
-        changeHash('#/Muro')
-      })
+        });
+      });
     });
-
-
-
   return div7;
-
-
-
 };

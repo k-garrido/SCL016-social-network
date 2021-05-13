@@ -1,8 +1,8 @@
-import { singInBttn, loginGoogle } from '../lib/firebase.js'
-import { changeHash, errorAD } from '../lib/index.js'
+import { singInBttn, loginGoogle } from '../lib/firebase.js';
+import { changeHash, errorAD } from '../lib/index.js';
 
 export const singInTemplate = () => {
-  const div1 = document.createElement ("div")
+  const div1 = document.createElement('div');
   const singIn = `
   <header id="principalHeader">
     <img src="./images/Logo.png" id="logoPage1">
@@ -36,24 +36,21 @@ export const singInTemplate = () => {
     `;
   div1.innerHTML = singIn;
 
-  //Dandole funcionalidad al boton de iniciar sesion.
+  // Dandole funcionalidad al boton de iniciar sesion.
   div1.querySelector('#singInBttn').addEventListener('click', () => {
     const mail = div1.querySelector('#mail').value;
     const password = div1.querySelector('#password').value;
     singInBttn(mail, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        changeHash ('#/Muro')
+      .then(() => {
+        changeHash('#/Muro');
       }).catch((error) => {
         const errorMessage = error.message;
-        const errorLi = div1.querySelector ('#errorMesssage')
-        errorLi.innerHTML = ''
-        errorLi.appendChild(errorAD(errorMessage))  
+        const errorLi = div1.querySelector('#errorMesssage');
+        errorLi.innerHTML = '';
+        errorLi.appendChild(errorAD(errorMessage));
       });
-  })
-  //Dandole funcionalidad al boton de iniciar sesion con Google.
-  div1.querySelector('#googleBttn').addEventListener('click', loginGoogle)
-    
+  });
+  // Dandole funcionalidad al boton de iniciar sesion con Google.
+  div1.querySelector('#googleBttn').addEventListener('click', loginGoogle);
   return div1;
 };
-

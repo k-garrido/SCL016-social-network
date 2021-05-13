@@ -1,5 +1,5 @@
 export const filterAndSeachTemplate = () => {
-  const  div5 =  document.createElement('div');
+  const div5 = document.createElement('div');
   const filterAndSearch = `
   <header class="headerSecondary">
     <img src="./images/Logo.png" class="logo">
@@ -28,6 +28,6 @@ export const filterAndSeachTemplate = () => {
       </div>
     </div>
   </div>`;
-div5.innerHTML = filterAndSearch;
+  div5.innerHTML = filterAndSearch;
   return div5;
 };

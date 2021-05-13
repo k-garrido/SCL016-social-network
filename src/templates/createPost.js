@@ -1,8 +1,8 @@
-import { savePost } from '../lib/firebase.js'
-import { signOut } from '../lib/firebase.js'
-import { changeHash } from '../lib/index.js'
+import { savePost, signOut } from '../lib/firebase.js';
+import { changeHash } from '../lib/index.js';
+
 export const createPostTemplate = () => {
-  const div4 = document.createElement('div')
+  const div4 = document.createElement('div');
   const createPost = `
     <header class="headerSecondary">
     <img src="./images/Logo.png" class="logo">
@@ -68,47 +68,48 @@ export const createPostTemplate = () => {
     
     `;
   div4.innerHTML = createPost;
-  //Utilizando firestore para subir los posts.
-  const createPostFireStore = div4.querySelector("#createPostForm");
-  createPostFireStore.addEventListener("submit", async (e) => {
+  // const storage = firebase.storage();
+  const uploadImages = () => {
+    const uploadImg = document.getElementById('imgPst');
+    const file = uploadImg.files[0];
+  };
+  // Utilizando firestore para subir los posts.
+  const createPostFireStore = div4.querySelector('#createPostForm');
+  createPostFireStore.addEventListener('submit', async (e) => {
     e.preventDefault();
     const titleCreatePost = div4.querySelector('#titleCreatePost').value;
     const contents = div4.querySelector('#contents').value;
     const typePost = div4.querySelector('input[name="publicationType"]:checked').id;
     const select = div4.querySelector('#selectRegion');
     const selectRgn = select.options[select.selectedIndex].text;
-    await uploadImages();
-    await savePost (titleCreatePost, contents, typePost, selectRgn)
-    createPostFireStore.reset()
-    changeHash('#/Muro')
-  });
-  // const storage = firebase.storage();
-  const uploadImages = () => {
-  const uploadImg = document.getElementById('imgPst');
-  const file = uploadImg.files[0];
-  
-};
-  //Dando funcionalidad a los botones del footer
-  const userInpt= div4.querySelector('#userInpt')
-  const singOutProfile = div4.querySelector('#singOutProfile'); 
-  userInpt.addEventListener ('click', () =>{
-    const singOutBttn = document.createElement('LI')
-    singOutBttn.className= 'profileFeed'
-    singOutBttn.textContent= 'Desconectarse'
-    singOutBttn.addEventListener('click',() =>{
-      signOut()
-      changeHash ('#/IniciarSesion')
-    }) 
-    const viewProfile = document.createElement('LI')
-    viewProfile.className= 'profileFeed'
-    viewProfile.textContent='Ver mi perfil'
-    viewProfile.addEventListener('click',() =>{
-      changeHash ('#/Perfil')
-    })
 
-    singOutProfile.insertBefore(singOutBttn,userInpt)
-    singOutProfile.insertBefore(viewProfile,userInpt)
-  })
+    await uploadImages();
+    await savePost(titleCreatePost, contents, typePost, selectRgn);
+    createPostFireStore.reset();
+    changeHash('#/Muro');
+  });
+
+  // Dando funcionalidad a los botones del footer
+  const userInpt = div4.querySelector('#userInpt');
+  const singOutProfile = div4.querySelector('#singOutProfile');
+  userInpt.addEventListener('click', () => {
+    const singOutBttn = document.createElement('LI');
+    singOutBttn.className = 'profileFeed';
+    singOutBttn.textContent = 'Desconectarse';
+    singOutBttn.addEventListener('click', () => {
+      signOut();
+      changeHash('#/IniciarSesion');
+    });
+    const viewProfile = document.createElement('LI');
+    viewProfile.className = 'profileFeed';
+    viewProfile.textContent = 'Ver mi perfil';
+    viewProfile.addEventListener('click', () => {
+      changeHash('#/Perfil');
+    });
+
+    singOutProfile.insertBefore(singOutBttn, userInpt);
+    singOutProfile.insertBefore(viewProfile, userInpt);
+  });
 
   return div4;
 };

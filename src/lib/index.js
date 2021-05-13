@@ -1,5 +1,4 @@
-
-//Funcion para mostrar los mensajes de error
+// Funcion para mostrar los mensajes de error
 export const errorAD = (error) => {
   const errorP = document.createElement('p');
   errorP.id = 'PrintingErrorMessage';
@@ -20,13 +19,13 @@ export const errorAD = (error) => {
       errorP.innerHTML = 'El correo ya está siendo usado en otra cuenta.';
       break;
     default:
-      console.log ('Error desconocido');
+      errorP.innerHTML = 'Error desconocido';
       break;
   }
   return errorP;
 };
 
-//Funcion para cambiar el hash
-export const changeHash = (hash) =>  {
+// Funcion para cambiar el hash.
+export const changeHash = (hash) => {
   location.hash = hash;
-}
+};

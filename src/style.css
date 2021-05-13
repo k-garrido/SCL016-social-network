@@ -263,6 +263,9 @@ body{
     #createPostForm{
         width: 100%;
     }
+    #editPostForm{
+        width: 100%;
+    }
 
         .createPostUl{
             display: flex;

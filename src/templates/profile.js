@@ -1,5 +1,5 @@
 export const profileTemplate = () => {
-  const div6 = document.createElement ('div');
+  const div6 = document.createElement('div');
   const profile = `
     <header class="headerSecondary">
     <img src="./images/Logo.png" class="logo">
