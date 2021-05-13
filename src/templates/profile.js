@@ -1,7 +1,11 @@
 export const profileTemplate = () => {
+  const div6 = document.createElement ('div');
   const profile = `
+    <header class="headerSecondary">
+    <img src="./images/Logo.png" class="logo">
+    </header>
     <div id="pageProfile">
-      <h2>Editar perfil</h2>
+      <h2 class="title1" >Editar perfil</h2>
       <p></p>
       <form>
         <ul>
@@ -15,6 +19,7 @@ export const profileTemplate = () => {
           </li>
           </ul>
       </form>
-    </div>`
-  return profile;
+    </div>`;
+  div6.innerHTML = profile;
+  return div6;
 };
