@@ -1,4 +1,4 @@
-<img src="images/Logo.png">
+<img src="./src/images/Logo.png" width= 50%>
 
 # Viaja sin miedo :sunrise_over_mountains: :ocean: :palm_tree:
 
@@ -9,12 +9,12 @@ Personas que tengan las ganas de viajar, que tengan recuerdos de algún lugar qu
 
 ## 2.  Definición del producto :bar_chart:
 Luego de identificar nuestro público objetivo, se realizó cuestionario para identificar cuales eran las necesidades específicas de nuestros usuarios. A continuación dejamos el resumen de los resultados arrojados.
-<img src= "imagesReadMe/1.PNG">
-<img src= "imagesReadMe/2.PNG">
+<img src= "./src/imagesReadMe/1.PNG">
+<img src= "./src/imagesReadMe/2.PNG">
 
 Además se realizó encuesta para identificar el color adecuado para nuestra red social.
-<img src= "imagesReadMe/colorRedSocial1.PNG">
-<img src= "imagesReadMe/colorRedSocial2.PNG">
+<img src= "./src/imagesReadMe/colorRedSocial1.PNG">
+<img src= "./src/imagesReadMe/colorRedSocial2.PNG">
 
 ## 3. Historias de usuario :thought_balloon:
 
@@ -35,9 +35,9 @@ Se realizaron historias de usuarios a partir de la identificación de necesidade
 ## 3. Diseño de interfaz de usuario :round_pushpin:
 
 ### Prototipo de Baja fidelidad :pencil2:
-<img src= "imagesReadMe/sketch.PNG">
+<img src= "./src/imagesReadMe/sketch.PNG">
 
 ### Prototipo de Alta fidelidad :black_nib:
-<img src= "imagesReadMe/figma.PNG">
+<img src= "./src/imagesReadMe/figma.PNG">
 
 ## 4. Producto final
