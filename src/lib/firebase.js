@@ -1,9 +1,10 @@
 // Ingreso sesión usuario
-export const singInBttn = (mail, password) =>
+export const singInBttn = (mail, password) => 
   firebase.auth().signInWithEmailAndPassword(mail, password);
 
 // Registo del usuario
-export const singUpBttn = (mail2, password2) => firebase.auth().createUserWithEmailAndPassword(mail2, password2);
+export const singUpBttn = (mail2, password2) => 
+  firebase.auth().createUserWithEmailAndPassword(mail2, password2);
 
 // Login con Google
 export const loginGoogle = () => {
